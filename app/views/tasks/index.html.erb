@@ -4,13 +4,13 @@
   <ul class="list-group list-group-flush">
     <% @tasks.each do |task| %>
       <li class="list-group-item border-start border-bottom border-success my-2 text-black d-flex justify-content-between">
-        <div>
+        <div data-controller="complete-task" data-complete-task-id-value="<%=task.id%>">
           <% if task.completed == true %>
             <i class="fa-solid fa-square-check me-3" id='checkbox' style="color: #4af7e3;"></i>
           <% else %>
-            <i class="fa-solid fa-square fa-bounce me-3" id='checkbox' style="color: #83c9c0;"></i>
+            <i class="fa-solid fa-square fa-bounce me-3" id='checkbox' data-action="click->complete-task#complete" style="color: #83c9c0;"></i>
           <% end %>
-          <%= link_to task.title, task_path(task.id), style: "text-decoration:none" %>
+          <%= link_to task.title, task_path(task.id), style: "text-decoration:none", data: {complete_task_target: 'todo'} %>
         </div>
         <%= link_to "<i class='fa-solid fa-delete-left fa-lg' style='color: #f06f19;'></i>".html_safe, task_path(task.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       </li>
