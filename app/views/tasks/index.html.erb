@@ -1,15 +1,14 @@
- <div class="container mt-3">
-  <h1>To-Do List</h1>
+ <h1>To-Do List</h1>
 
   <div class="border p-3 rounded">
   <ul class="list-group list-group-flush">
     <% @tasks.each do |task| %>
-      <li class="list-group-item border-start border-bottom border-success my-1 text-black d-flex justify-content-between">
+      <li class="list-group-item border-start border-bottom border-success my-2 text-black d-flex justify-content-between">
         <div>
           <% if task.completed == true %>
-            <i class="fa-solid fa-square-check me-3" style="color: #4af7e3;"></i>
+            <i class="fa-solid fa-square-check me-3" id='checkbox' style="color: #4af7e3;"></i>
           <% else %>
-            <i class="fa-solid fa-square fa-bounce me-3" style="color: #83c9c0;"></i>
+            <i class="fa-solid fa-square fa-bounce me-3" id='checkbox' style="color: #83c9c0;"></i>
           <% end %>
           <%= link_to task.title, task_path(task.id), style: "text-decoration:none" %>
         </div>
@@ -18,4 +17,4 @@
     <% end %>
   </ul>
   </div>
- </div>
+  <%= link_to "<button class='btn btn-info text-white my-3 mx-1'>Add To Do Item</button>".html_safe, tasks_new_path %>

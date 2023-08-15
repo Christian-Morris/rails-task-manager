@@ -1,15 +1,27 @@
-<h1><%= @task.title %></h1>
+<%= link_to "<i class='fa-solid fa-angles-left'></i>".html_safe, tasks_path%>
 
-<p>Details: <%= @task.details %></p>
+<h1 class="my-2">Edit To-Do Item</h1>
 
-<p>Completed: <%= @task.completed %></p>
-
-<h1>Edit Task</h1>
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <%= @task.title %>
+    <% if @task.completed == true %>
+            <i class="fa-solid fa-square-check fa-bounce me-3" id='checkbox' style="color: #4af7e3;"></i>
+          <% else %>
+            <i class="fa-solid fa-square fa-bounce me-3" id='checkbox' style="color: #83c9c0;"></i>
+          <% end %>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%= @task.details %></p>
+    </blockquote>
+  </div>
+</div>
 
 <%= form_with model: @task do |t| %>
-<%= t.label :title %>
-<%= t.text_field :title %>
-<%= t.label :details %>
-<%= t.text_field :details %>
-<%= t.submit %>
+<%= t.label :title, class: "my-2 fw-bolder" %>
+<%= t.text_field :title, class:"form-control", placeholder: "New to-do item name" %>
+<%= t.label :details, class: "my-2 fw-bolder" %>
+<%= t.text_field :details, class:"form-control", placeholder: "Explain what needs to be done" %>
+<%= t.submit 'Update To Do', class: 'btn btn-info my-4' %>
 <% end %>

@@ -1,9 +1,11 @@
-<h1>Add a New Task</h1>
+<%= link_to "<i class='fa-solid fa-angles-left'></i>".html_safe, tasks_path%>
+
+<h1 class="my-2">Add a New Task</h1>
 
 <%= form_with model: @task do |t| %>
-<%= t.label :title %>
-<%= t.text_field :title %>
-<%= t.label :details %>
-<%= t.text_field :details %>
-<%= t.submit %>
+<%= t.label :title, class: "my-2 fw-bolder" %>
+<%= t.text_field :title, class:"form-control", placeholder: "New to-do item name" %>
+<%= t.label :details, class: "my-2 fw-bolder" %>
+<%= t.text_field :details, class:"form-control", placeholder: "Explain what needs to be done" %>
+<%= t.submit 'Add To Do', class: 'btn btn-info my-4' %>
 <% end %>
